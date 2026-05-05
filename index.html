@@ -78,11 +78,12 @@
     #services { background: #0e0a05; padding: clamp(60px, 8vw, 100px) 0; }
     .sec-title { text-align: center; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--white); letter-spacing: -.03em; margin-bottom: 64px; }
 
-    .slider-wrap { position: relative; overflow: hidden; }
+    .slider-outer { overflow: hidden; }
+    .slider-wrap { position: relative; }
     .slider-track { display: flex; transition: transform .45s cubic-bezier(.25,1,.5,1); }
     .svc-slide {
       flex: 0 0 calc(100% / 3);
-      padding: 0 16px;
+      padding: 24px 16px 0;
       display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;
     }
     /* Diamond icon */
@@ -324,6 +325,7 @@
 <section id="services">
   <div class="w">
     <h2 class="sec-title">Nos Services</h2>
+    <div class="slider-outer">
     <div class="slider-wrap">
       <div class="slider-track" id="svcTrack">
 
@@ -445,6 +447,7 @@
         </div>
 
       </div>
+    </div>
     </div>
 
     <div class="slider-controls">
@@ -632,7 +635,7 @@
 
   function goTo(page){
     current = Math.max(0, Math.min(page, pages - 1));
-    const slideW = track.parentElement.offsetWidth / perView;
+    const slideW = track.parentElement.parentElement.offsetWidth / perView;
     track.style.transform = 'translateX(-' + (current * perView * slideW) + 'px)';
     dotsWrap.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === current));
   }
@@ -650,7 +653,7 @@
   function init(){
     perView = getPV();
     pages = Math.ceil(total / perView);
-    const slideW = track.parentElement.offsetWidth / perView;
+    const slideW = track.parentElement.parentElement.offsetWidth / perView;
     track.style.width = (total * slideW) + 'px';
     slides.forEach(s => { s.style.width = slideW + 'px'; s.style.flexShrink = '0'; s.style.flex = 'none'; });
     buildDots();
