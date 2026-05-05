@@ -81,72 +81,16 @@
       padding: 24px 16px 0;
       display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px;
     }
-    /* Diamond icon */
-    .diamond-wrap {
-      width: 110px; height: 110px;
-      position: relative; display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .diamond-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #3d2608 0%, #1e1005 50%, #2e1a06 100%);
-      border: 2px solid #7a5022;
-      transform: rotate(45deg);
-      border-radius: 6px;
-      box-shadow: inset 0 0 12px rgba(0,0,0,.6), 0 0 8px rgba(122,80,34,.3);
-    }
-    .diamond-bg::after {
-      content: '';
-      position: absolute; inset: 4px;
-      border: 1px solid rgba(180,120,50,.25);
-      border-radius: 4px;
-    }
-    .diamond-icon {
-      position: relative; z-index: 2;
-      font-size: 1.7rem;
-      line-height: 1;
-      display: flex; align-items: center; justify-content: center;
-      width: 100%; height: 100%;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,.8));
-    }
-    .svc-name {
-      font-size: .82rem; font-weight: 800; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--white); line-height: 1.3;
-    }
-    .svc-desc {
-      font-size: .8rem; color: #a08060; line-height: 1.65;
-      max-width: 220px;
-    }
+    /* Service cards */
+    .svc-card { background: #1c1a18; border-radius: 8px; overflow: hidden; }
+    .svc-img { width: 100%; height: 190px; overflow: hidden; }
+    .svc-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+    .svc-slide:hover .svc-img img { transform: scale(1.06); }
+    .svc-text { padding: 20px 18px 22px; }
+    .svc-name { font-size: .8rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--white); line-height: 1.3; margin-bottom: 10px; }
+    .svc-desc { font-size: .8rem; color: #9ca3af; line-height: 1.65; }
 
-    /* Slider controls */
-    .slider-controls {
-      display: flex; align-items: center; justify-content: center;
-      gap: 20px; margin-top: 52px;
-    }
-    .slider-arrow {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
-      color: #fff; font-size: 1.1rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s, border-color .2s;
-    }
-    .slider-arrow:hover { background: var(--orange); border-color: var(--orange); color: #000; }
-    .slider-dots { display: flex; gap: 8px; align-items: center; }
-    .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(255,255,255,.2); cursor: pointer;
-      transition: background .25s, transform .25s;
-    }
-    .dot.active { background: var(--orange2); transform: scale(1.3); }
-
-    @media (max-width: 900px) {
-      .svc-slide { flex: 0 0 50%; }
-    }
-    @media (max-width: 580px) {
-      .svc-slide { flex: 0 0 100%; }
-    }
-
-    /* SERVICE CLIENT */
+        /* SERVICE CLIENT */
     #service-client { background: var(--light); }
     .sc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding-top: clamp(60px, 8vw, 100px); padding-bottom: clamp(60px, 8vw, 100px); }
     .sc-h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 20px; color: #020202; }
@@ -315,166 +259,124 @@
       <div class="slider-track" id="svcTrack">
 
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">🔑</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Cl&eacute;s automobile" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Cl&eacute;s &amp; Carte Grise</div>
+              <div class="svc-desc">Reproduction et programmation de cl&eacute;s avec pr&eacute;sentation de la carte grise et des papiers du v&eacute;hicule. Toutes marques, toutes cylindr&eacute;es.</div>
+            </div>
           </div>
-          <div class="svc-name">Clés &amp; Carte Grise</div>
-          <div class="svc-desc">Reproduction et programmation de clés avec présentation de la carte grise et des papiers du véhicule. Toutes marques, toutes cylindrées.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">🔒</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=500&q=80" alt="Serrurier automobile" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Perte de Cl&eacute; Totale</div>
+              <div class="svc-desc">Vous avez perdu toutes vos cl&eacute;s ? Nous recr&eacute;ons un jeu complet et proc&eacute;dons au changement de serrure si n&eacute;cessaire. Intervention rapide sur place.</div>
+            </div>
           </div>
-          <div class="svc-name">Perte de Clé Totale</div>
-          <div class="svc-desc">Vous avez perdu toutes vos clés ? Nous recréons un jeu complet et procédons au changement de serrure si nécessaire. Intervention rapide sur place.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">⚙️</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=500&q=80" alt="Barrilet serrure" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Barrilets</div>
+              <div class="svc-desc">Remplacement et recodage de barrilets (serrure de porte, de contact, de coffre). Intervention pr&eacute;cise pour retrouver l'usage normal de votre v&eacute;hicule.</div>
+            </div>
           </div>
-          <div class="svc-name">Barrilets</div>
-          <div class="svc-desc">Remplacement et recodage de barrilets (serrure de porte, de contact, de coffre). Intervention précise pour retrouver l'usage normal de votre véhicule.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">💻</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1539768942893-daf3538e1047?w=500&q=80" alt="Programmation ECU" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Programmation ECU</div>
+              <div class="svc-desc">Reprogrammation et remplacement du calculateur moteur (ECU). Optimisation des param&egrave;tres moteur, suppression d'erreurs persistantes, adaptation &agrave; votre v&eacute;hicule.</div>
+            </div>
           </div>
-          <div class="svc-name">Programmation ECU</div>
-          <div class="svc-desc">Reprogrammation et remplacement du calculateur moteur (ECU). Optimisation des paramètres moteur, suppression d'erreurs persistantes, adaptation à votre véhicule.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">📡</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&q=80" alt="Codage calculateur" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Codage en Ligne</div>
+              <div class="svc-desc">Codage et adaptation de calculateurs, bo&icirc;tes de vitesse et modules &agrave; distance. Solution id&eacute;ale pour les pi&egrave;ces reconditionn&eacute;es ou import&eacute;es.</div>
+            </div>
           </div>
-          <div class="svc-name">Codage en Ligne</div>
-          <div class="svc-desc">Codage et adaptation de calculateurs, boîtes de vitesse et modules à distance. Solution idéale pour les pièces reconditionnées ou importées.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">🔧</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=500&q=80" alt="M&eacute;canique automobile" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">M&eacute;canique &amp; &Eacute;lectro</div>
+              <div class="svc-desc">Petite m&eacute;canique et &eacute;lectro-m&eacute;canique : freins, suspension, vidange, courroie, batterie, d&eacute;marreur, alternateur. Tout ce dont votre voiture a besoin au quotidien.</div>
+            </div>
           </div>
-          <div class="svc-name">Mécanique &amp; Électro</div>
-          <div class="svc-desc">Petite mécanique et électro-mécanique : freins, suspension, vidange, courroie, batterie, démarreur, alternateur. Tout ce dont votre voiture a besoin au quotidien.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">🖥️</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=500&q=80" alt="Calculateur moteur" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Calculateur Moteur</div>
+              <div class="svc-desc">Diagnostic, r&eacute;paration et remplacement de calculateur moteur. Nous identifions l'origine exacte de la panne et fournissons une solution durable.</div>
+            </div>
           </div>
-          <div class="svc-name">Calculateur Moteur</div>
-          <div class="svc-desc">Diagnostic, réparation et remplacement de calculateur moteur. Nous identifions l'origine exacte de la panne et fournissons une solution durable.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">🚗</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500&q=80" alt="Carrosserie automobile" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Carrosserie &amp; T&ocirc;lerie</div>
+              <div class="svc-desc">Remise en forme de carrosserie, d&eacute;bosselage, t&ocirc;lerie et soudure. Travail soign&eacute; pour redonner &agrave; votre v&eacute;hicule son aspect d'origine.</div>
+            </div>
           </div>
-          <div class="svc-name">Carrosserie &amp; Tôlerie</div>
-          <div class="svc-desc">Remise en forme de carrosserie, débosselage, tôlerie et soudure. Travail soigné pour redonner à votre véhicule son aspect d'origine.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">🔍</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=500&q=80" alt="Diagnostic automobile" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Recherche de Panne</div>
+              <div class="svc-desc">Diagnostic &eacute;lectronique complet avec valise professionnelle. Identification pr&eacute;cise des pannes moteur, capteurs d&eacute;faillants, voyants allum&eacute;s &mdash; r&eacute;solution garantie.</div>
+            </div>
           </div>
-          <div class="svc-name">Recherche de Panne</div>
-          <div class="svc-desc">Diagnostic électronique complet avec valise professionnelle. Identification précise des pannes moteur, capteurs défaillants, voyants allumés — résolution garantie.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">📋</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=500&q=80" alt="R&eacute;paration lourde" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Gros Probl&egrave;me M&eacute;canique</div>
+              <div class="svc-desc">Interventions lourdes sur devis : remplacement de moteur, bo&icirc;te de vitesse, transmission. Devis gratuit et transparent avant chaque intervention.</div>
+            </div>
           </div>
-          <div class="svc-name">Gros Problème Mécanique</div>
-          <div class="svc-desc">Interventions lourdes sur devis : remplacement de moteur, boîte de vitesse, transmission. Devis gratuit et transparent avant chaque intervention.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">🛢️</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=500&q=80" alt="Pi&egrave;ces automobiles" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Pi&egrave;ces Auto</div>
+              <div class="svc-desc">Vente de pi&egrave;ces neuves et d'occasion : huile moteur, plaquettes, disques, suspensions, freinage et plus. Toutes marques &agrave; prix comp&eacute;titifs.</div>
+            </div>
           </div>
-          <div class="svc-name">Pièces Auto</div>
-          <div class="svc-desc">Vente de pièces neuves et d'occasion : huile moteur, plaquettes, disques, suspensions, freinage et plus. Toutes marques à prix compétitifs.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">⚡</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1539768942893-daf3538e1047?w=500&q=80" alt="&Eacute;lectronique automobile" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">&Eacute;lectronique Auto</div>
+              <div class="svc-desc">Reprogrammation, codage, remplacement de capteurs (ABS, oxyg&egrave;ne, pression). Solutions compl&egrave;tes pour tous les probl&egrave;mes &eacute;lectroniques de votre v&eacute;hicule.</div>
+            </div>
           </div>
-          <div class="svc-name">Électronique Auto</div>
-          <div class="svc-desc">Reprogrammation, codage, remplacement de capteurs (ABS, oxygène, pression). Solutions complètes pour tous les problèmes électroniques de votre véhicule.</div>
         </div>
-
         <div class="svc-slide">
-          <div class="diamond-wrap">
-            <div class="diamond-bg"></div>
-            <div class="diamond-icon">🛠️</div>
+          <div class="svc-card">
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=500&q=80" alt="Entretien automobile" loading="lazy"/></div>
+            <div class="svc-text">
+              <div class="svc-name">Petite M&eacute;canique</div>
+              <div class="svc-desc">Vidange, filtre &agrave; air, bougies, courroie d'accessoires, remplacement de plaquettes et disques. Entretien courant rapide et soign&eacute; pour votre v&eacute;hicule.</div>
+            </div>
           </div>
-          <div class="svc-name">Petite Mécanique</div>
-          <div class="svc-desc">Vidange, filtre à air, bougies, courroie d'accessoires, remplacement de plaquettes et disques. Entretien courant rapide et soigné pour votre véhicule.</div>
         </div>
 
-      </div>
-    </div>
-    </div>
-
-    <div class="slider-controls">
-      <button class="slider-arrow" id="svcPrev">&#8592;</button>
-      <div class="slider-dots" id="svcDots"></div>
-      <button class="slider-arrow" id="svcNext">&#8594;</button>
-    </div>
-  </div>
-</section>
-
-<!-- AU SERVICE DU CLIENT -->
-<section id="service-client">
-  <div class="w">
-    <div class="sc-inner">
-      <div>
-        <div class="sec-eyebrow">Disponible 6j/7 — Interventions rapides</div>
-        <h2 class="sc-h2">Nous sommes au<br><span>service du client</span></h2>
-        <p class="sec-p">Nos spécialistes sont à votre disposition pour répondre à toutes vos questions et résoudre vos problèmes automobiles. Qu'il s'agisse d'une clé perdue, d'un calculateur défaillant, ou d'une panne complexe, nous trouvons toujours une solution.</p>
-        <p class="sec-p" style="font-style:italic; font-weight:600; color:#555;">"La pièce qu'il vous faut, le service qu'il faut. AutoMAuto, votre garage de confiance."</p>
-        <a href="tel:0472468730" class="btn-orange">📞 0472 46 87 30</a>
-      </div>
-      <div class="col-img">
-        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=700&q=80" alt="Technicien AutoMAuto"/>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALERIE -->
-<section id="galerie">
-  <div class="w">
-    <h2 class="sec-title">Visitez notre galerie</h2>
-    <div class="slider-outer">
-    <div class="slider-wrap">
-      <div class="slider-track" id="galTrack">
-        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&q=80" alt="Garage AutoMAuto"/></div>
-        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Réparation automobile"/></div>
-        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1539768942893-daf3538e1047?w=600&q=80" alt="Électronique automobile"/></div>
-        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&q=80" alt="Mécanique Charleroi"/></div>
-        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Carrosserie auto"/></div>
-        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80" alt="AutoMAuto Charleroi"/></div>
-      </div>
+            </div>
     </div>
     </div>
     <div class="slider-controls" style="margin-bottom:32px;">
