@@ -90,7 +90,7 @@
     .svc-name { font-size: .8rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--white); line-height: 1.3; margin-bottom: 10px; }
     .svc-desc { font-size: .8rem; color: #9ca3af; line-height: 1.65; }
 
-        /* SERVICE CLIENT */
+    /* SERVICE CLIENT */
     #service-client { background: var(--light); }
     .sc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding-top: clamp(60px, 8vw, 100px); padding-bottom: clamp(60px, 8vw, 100px); }
     .sc-h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 20px; color: #020202; }
@@ -101,7 +101,28 @@
     #galerie .sec-title { color: var(--white); }
     .gal-slide { flex-shrink: 0; padding: 0 8px; box-sizing: border-box; }
     .gal-slide img { width: 100%; height: 260px; object-fit: cover; border-radius: 4px; display: block; }
-    #galerie .slider-controls { margin-top: 32px; }
+    /* Slider controls */
+    .slider-controls {
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; padding: 32px 0 8px;
+    }
+    .slider-arrow {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: transparent; border: 2px solid #7a5022;
+      color: var(--white); font-size: 1.1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .slider-arrow:hover { background: var(--orange); border-color: var(--orange); color: #000; }
+    .slider-dots { display: flex; gap: 8px; align-items: center; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #555; border: none; cursor: pointer;
+      transition: background .2s, transform .2s; padding: 0;
+    }
+    .dot.active { background: var(--orange); transform: scale(1.3); }
+
+        #galerie .slider-controls { margin-top: 32px; }
     #galerie .slider-arrow { background: transparent; border-color: #555; color: #fff; }
     #galerie .slider-arrow:hover { background: var(--orange); border-color: var(--orange); color: #000; }
     .btn-dark { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--orange); color: #000; font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 18px 40px; border-radius: 4px; transition: background .2s; }
@@ -269,7 +290,7 @@
         </div>
         <div class="svc-slide">
           <div class="svc-card">
-            <div class="svc-img"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=500&q=80" alt="Serrurier automobile" loading="lazy"/></div>
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=500&q=80" alt="Clé de voiture perdue" loading="lazy"/></div>
             <div class="svc-text">
               <div class="svc-name">Perte de Cl&eacute; Totale</div>
               <div class="svc-desc">Vous avez perdu toutes vos cl&eacute;s ? Nous recr&eacute;ons un jeu complet et proc&eacute;dons au changement de serrure si n&eacute;cessaire. Intervention rapide sur place.</div>
@@ -278,7 +299,7 @@
         </div>
         <div class="svc-slide">
           <div class="svc-card">
-            <div class="svc-img"><img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=500&q=80" alt="Barrilet serrure" loading="lazy"/></div>
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=500&q=80" alt="Barrilet de porte" loading="lazy"/></div>
             <div class="svc-text">
               <div class="svc-name">Barrilets</div>
               <div class="svc-desc">Remplacement et recodage de barrilets (serrure de porte, de contact, de coffre). Intervention pr&eacute;cise pour retrouver l'usage normal de votre v&eacute;hicule.</div>
@@ -287,7 +308,7 @@
         </div>
         <div class="svc-slide">
           <div class="svc-card">
-            <div class="svc-img"><img src="https://images.unsplash.com/photo-1539768942893-daf3538e1047?w=500&q=80" alt="Programmation ECU" loading="lazy"/></div>
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=500&q=80" alt="Programmation ECU" loading="lazy"/></div>
             <div class="svc-text">
               <div class="svc-name">Programmation ECU</div>
               <div class="svc-desc">Reprogrammation et remplacement du calculateur moteur (ECU). Optimisation des param&egrave;tres moteur, suppression d'erreurs persistantes, adaptation &agrave; votre v&eacute;hicule.</div>
@@ -296,7 +317,7 @@
         </div>
         <div class="svc-slide">
           <div class="svc-card">
-            <div class="svc-img"><img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&q=80" alt="Codage calculateur" loading="lazy"/></div>
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1539768942893-daf3538e1047?w=500&q=80" alt="Codage en ligne" loading="lazy"/></div>
             <div class="svc-text">
               <div class="svc-name">Codage en Ligne</div>
               <div class="svc-desc">Codage et adaptation de calculateurs, bo&icirc;tes de vitesse et modules &agrave; distance. Solution id&eacute;ale pour les pi&egrave;ces reconditionn&eacute;es ou import&eacute;es.</div>
@@ -314,7 +335,7 @@
         </div>
         <div class="svc-slide">
           <div class="svc-card">
-            <div class="svc-img"><img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=500&q=80" alt="Calculateur moteur" loading="lazy"/></div>
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=500&q=80" alt="Calculateur moteur" loading="lazy"/></div>
             <div class="svc-text">
               <div class="svc-name">Calculateur Moteur</div>
               <div class="svc-desc">Diagnostic, r&eacute;paration et remplacement de calculateur moteur. Nous identifions l'origine exacte de la panne et fournissons une solution durable.</div>
@@ -332,7 +353,7 @@
         </div>
         <div class="svc-slide">
           <div class="svc-card">
-            <div class="svc-img"><img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=500&q=80" alt="Diagnostic automobile" loading="lazy"/></div>
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=500&q=80" alt="Diagnostic automobile" loading="lazy"/></div>
             <div class="svc-text">
               <div class="svc-name">Recherche de Panne</div>
               <div class="svc-desc">Diagnostic &eacute;lectronique complet avec valise professionnelle. Identification pr&eacute;cise des pannes moteur, capteurs d&eacute;faillants, voyants allum&eacute;s &mdash; r&eacute;solution garantie.</div>
@@ -368,7 +389,7 @@
         </div>
         <div class="svc-slide">
           <div class="svc-card">
-            <div class="svc-img"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=500&q=80" alt="Entretien automobile" loading="lazy"/></div>
+            <div class="svc-img"><img src="https://images.unsplash.com/photo-1580274455191-1c62238fa1c2?w=500&q=80" alt="Entretien automobile" loading="lazy"/></div>
             <div class="svc-text">
               <div class="svc-name">Petite M&eacute;canique</div>
               <div class="svc-desc">Vidange, filtre &agrave; air, bougies, courroie d'accessoires, remplacement de plaquettes et disques. Entretien courant rapide et soign&eacute; pour votre v&eacute;hicule.</div>
@@ -379,6 +400,47 @@
             </div>
     </div>
     </div>
+    <div class="slider-controls" style="margin-top:32px;">
+      <button class="slider-arrow" id="svcPrev">&#8592;</button>
+      <div class="slider-dots" id="svcDots"></div>
+      <button class="slider-arrow" id="svcNext">&#8594;</button>
+    </div>
+  </div>
+</section>
+<!-- SERVICE CLIENT -->
+<section id="service-client">
+  <div class="w">
+    <div class="sc-inner">
+      <div>
+        <div class="sec-eyebrow">Notre engagement</div>
+        <h2 class="sc-h2">On s&rsquo;occupe<br>de <span>tout</span></h2>
+        <p class="sec-p">Confier votre v&eacute;hicule &agrave; AutoMAuto, c&rsquo;est choisir un garage transparent, r&eacute;actif et comp&eacute;tent. Cl&eacute;s, ECU, m&eacute;canique, carrosserie &mdash; une seule adresse pour tout r&eacute;soudre.</p>
+        <p class="sec-p" style="margin-top:12px;">Devis gratuit, intervention soign&eacute;e, tarifs justes. Votre voiture repart en ordre &mdash; c&rsquo;est notre promesse.</p>
+        <a href="tel:0472468730" class="btn-orange" style="margin-top:24px;">&#128222; Nous contacter</a>
+      </div>
+      <div class="col-img">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=700&q=80" alt="Technicien AutoMAuto"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie">
+  <div class="w">
+    <h2 class="sec-title">Visitez notre galerie</h2>
+    <div class="slider-outer">
+    <div class="slider-wrap">
+      <div class="slider-track" id="galTrack">
+        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&q=80" alt="Garage AutoMAuto"/></div>
+        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="R&eacute;paration automobile"/></div>
+        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1539768942893-daf3538e1047?w=600&q=80" alt="&Eacute;lectronique automobile"/></div>
+        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&q=80" alt="M&eacute;canique Charleroi"/></div>
+        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Carrosserie auto"/></div>
+        <div class="gal-slide"><img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=600&q=80" alt="AutoMAuto Charleroi"/></div>
+      </div>
+    </div>
+    </div>
     <div class="slider-controls" style="margin-bottom:32px;">
       <button class="slider-arrow" id="galPrev">&#8592;</button>
       <div class="slider-dots" id="galDots"></div>
@@ -387,7 +449,6 @@
     <a href="mailto:garageautomauto@gmail.com" class="btn-dark">Contactez-nous</a>
   </div>
 </section>
-
 
 <!-- AVIS GOOGLE -->
 <section id="avis">
