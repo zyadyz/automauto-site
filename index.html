@@ -634,7 +634,7 @@
   }
 
   function goTo(page){
-    current = Math.max(0, Math.min(page, pages - 1));
+    current = ((page % pages) + pages) % pages;
     const slideW = track.parentElement.parentElement.offsetWidth / perView;
     track.style.transform = 'translateX(-' + (current * perView * slideW) + 'px)';
     dotsWrap.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === current));
