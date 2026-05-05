@@ -406,6 +406,15 @@
           <div class="svc-desc">Reprogrammation, codage, remplacement de capteurs (ABS, oxygène, pression). Solutions complètes pour tous les problèmes électroniques de votre véhicule.</div>
         </div>
 
+        <div class="svc-slide">
+          <div class="diamond-wrap">
+            <div class="diamond-bg"></div>
+            <div class="diamond-icon">🛠️</div>
+          </div>
+          <div class="svc-name">Petite Mécanique</div>
+          <div class="svc-desc">Vidange, filtre à air, bougies, courroie d'accessoires, remplacement de plaquettes et disques. Entretien courant rapide et soigné pour votre véhicule.</div>
+        </div>
+
       </div>
     </div>
 
@@ -530,11 +539,10 @@
   const slides = track.querySelectorAll('.svc-slide');
   const dotsWrap = document.getElementById('svcDots');
   const total = slides.length;
-  let perView = window.innerWidth <= 580 ? 1 : window.innerWidth <= 900 ? 2 : 3;
-  let current = 0;
-  const pages = Math.ceil(total / perView);
+  let perView = 3, pages = 1, current = 0;
 
-  // Build dots
+  function getPV(){ return window.innerWidth <= 580 ? 1 : window.innerWidth <= 900 ? 2 : 3; }
+
   function buildDots(){
     dotsWrap.innerHTML = '';
     for(let i = 0; i < pages; i++){
@@ -547,15 +555,14 @@
 
   function goTo(page){
     current = Math.max(0, Math.min(page, pages - 1));
-    const offset = current * perView * (100 / total);
-    track.style.transform = 'translateX(-' + offset + '%)';
+    const slideW = track.parentElement.offsetWidth / perView;
+    track.style.transform = 'translateX(-' + (current * perView * slideW) + 'px)';
     dotsWrap.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === current));
   }
 
   document.getElementById('svcPrev').addEventListener('click', () => goTo(current - 1));
   document.getElementById('svcNext').addEventListener('click', () => goTo(current + 1));
 
-  // Swipe support
   let startX = 0;
   track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
   track.addEventListener('touchend', e => {
@@ -564,8 +571,11 @@
   });
 
   function init(){
-    perView = window.innerWidth <= 580 ? 1 : window.innerWidth <= 900 ? 2 : 3;
-    slides.forEach(s => s.style.flex = '0 0 calc(100% / ' + perView + ')');
+    perView = getPV();
+    pages = Math.ceil(total / perView);
+    const slideW = track.parentElement.offsetWidth / perView;
+    track.style.width = (total * slideW) + 'px';
+    slides.forEach(s => { s.style.width = slideW + 'px'; s.style.flexShrink = '0'; s.style.flex = 'none'; });
     buildDots();
     goTo(0);
   }
