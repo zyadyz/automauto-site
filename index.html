@@ -512,20 +512,23 @@
     <h2 class="devis-title">Demandez votre devis</h2>
     <p class="devis-sub">On vous rappelle rapidement. Devis transparent, sans engagement.</p>
     <div class="devis-card">
-      <form action="https://formspree.io/garageautomauto@gmail.com" method="POST">
+      <form id="devis-form">
+        <input type="hidden" name="_subject" value="Nouvelle demande de devis — AutoMAuto"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_template" value="table"/>
         <div class="devis-row">
           <div class="devis-field">
             <label class="devis-label">Prénom <span>*</span></label>
-            <input class="devis-input" type="text" name="prenom" placeholder="Votre prénom" required/>
+            <input class="devis-input" type="text" name="Prénom" placeholder="Votre prénom" required/>
           </div>
           <div class="devis-field">
             <label class="devis-label">Téléphone <span>*</span></label>
-            <input class="devis-input" type="tel" name="telephone" placeholder="04XX XX XX XX" required/>
+            <input class="devis-input" type="tel" name="Téléphone" placeholder="04XX XX XX XX" required/>
           </div>
         </div>
         <div class="devis-field">
           <label class="devis-label">Type d'intervention <span>*</span></label>
-          <select class="devis-select" name="service" required>
+          <select class="devis-select" name="Service" required>
             <option value="" disabled selected>Sélectionnez un service</option>
             <option>Clés avec carte grise &amp; papiers du véhicule</option>
             <option>Perte de clé totale — Changement de serrure</option>
@@ -544,11 +547,52 @@
         </div>
         <div class="devis-field">
           <label class="devis-label">Description (optionnel)</label>
-          <textarea class="devis-textarea" name="description" placeholder="Décrivez brièvement votre véhicule ou votre besoin..."></textarea>
+          <textarea class="devis-textarea" name="Description" placeholder="Décrivez brièvement votre véhicule ou votre besoin..."></textarea>
         </div>
-        <button class="devis-submit" type="submit">Envoyer ma demande</button>
+        <button class="devis-submit" type="submit" id="devis-btn">
+          <span id="devis-btn-text">Envoyer ma demande</span>
+        </button>
+        <div id="devis-success" style="display:none; margin-top:16px; background:#d1fae5; border:1px solid #6ee7b7; border-radius:8px; padding:14px 20px; color:#065f46; font-size:.88rem; font-weight:600; text-align:center;">
+          ✅ Demande envoyée ! On vous rappelle très rapidement.
+        </div>
+        <div id="devis-error" style="display:none; margin-top:16px; background:#fee2e2; border:1px solid #fca5a5; border-radius:8px; padding:14px 20px; color:#991b1b; font-size:.88rem; font-weight:600; text-align:center;">
+          ❌ Erreur lors de l'envoi. Appelez-nous directement au 0472 46 87 30.
+        </div>
         <p class="devis-note">Réponse rapide · Devis gratuit · Aucun engagement</p>
       </form>
+
+      <script>
+      document.getElementById('devis-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('devis-btn');
+        const btnText = document.getElementById('devis-btn-text');
+        const successMsg = document.getElementById('devis-success');
+        const errorMsg = document.getElementById('devis-error');
+        btnText.textContent = 'Envoi en cours...';
+        btn.disabled = true;
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        try {
+          const data = new FormData(this);
+          const res = await fetch('https://formsubmit.co/ajax/garageautomauto@gmail.com', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: data
+          });
+          const json = await res.json();
+          if (json.success === 'true' || json.success === true) {
+            successMsg.style.display = 'block';
+            this.reset();
+          } else {
+            throw new Error('Erreur');
+          }
+        } catch(err) {
+          errorMsg.style.display = 'block';
+        }
+        btnText.textContent = 'Envoyer ma demande';
+        btn.disabled = false;
+      });
+      </script>
     </div>
   </div>
 </section>
@@ -606,6 +650,9 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#galerie">Galerie</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+      <li><a href="cgv.html">CGV</a></li>
+      <li><a href="politique-confidentialite.html">Confidentialité</a></li>
     </ul>
     <p class="ft-copy">AutoMAuto — Garage &amp; Électronique Automobile · Rue Warmonceau 304, 6000 Charleroi<br>© 2026 AutoMAuto. Tous droits réservés.</p>
   </div>
