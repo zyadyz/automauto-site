@@ -46,6 +46,12 @@
     .hero-content { display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 5vw, 72px) clamp(28px, 4vw, 64px); }
     .hero-top { }
     .hero-bottom { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    @media (min-width: 901px) {
+      .hero-grid { align-items: stretch; }
+      .hero-img-col { position: relative; overflow: hidden; background: #e8e8e8; }
+      .hero-car-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: top center; }
+      .hero-garage-img { display: none; }
+    }
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
       .hero-car-img { order: -1; }
@@ -251,7 +257,7 @@
         <p style="font-size:1rem; font-weight:600; color:#ccc; margin-bottom:24px; line-height:1.5;">La pièce qu'il vous faut, le service qu'il vous faut.</p>
         <div class="hero-urgency-t" style="margin-bottom:16px;">Perte totale<br>de vos clés ?</div>
         <a href="tel:0472468730" class="btn-orange">📞 TEL 0472 46 87 30</a>
-        <img src="garage.png" alt="AutoMAuto garage Charleroi" style="width:100%; max-width:420px; border-radius:8px; margin-top:20px; display:block;"/>
+        <img src="garage.png" alt="AutoMAuto garage Charleroi" class="hero-garage-img" style="width:100%; max-width:420px; border-radius:8px; margin-top:20px; display:block;"/>
       </div>
       <div class="hero-bottom">
         <div class="hero-location">Charleroi — Rue Warmonceau 304</div>
@@ -464,6 +470,8 @@
   </div>
 </section>
 
+<div style="height:6px; background: linear-gradient(90deg, var(--orange), var(--orange2), var(--orange)); opacity:.85;"></div>
+
 <!-- AVIS GOOGLE -->
 <section id="avis">
   <div class="w">
@@ -482,7 +490,7 @@
         </a>
       </div>
       <div class="avis-right">
-        <h2 class="avis-heading">Nos clients parlent mieux que n'importe quelle pub</h2>
+        <h2 class="avis-heading">Nos clients en parlent mieux que nous</h2>
         <p class="avis-desc">AutoMAuto, c'est plus de 10 ans d'interventions à Charleroi. Clés perdues, ECU défaillant, mécanique complexe - on a vu de tout, et on a toujours trouvé la solution. Chaque client qui repart satisfait est notre meilleure carte de visite.</p>
         <p class="avis-desc" style="margin-top:12px;"><strong>Déjà passé chez nous ?</strong> Votre retour compte énormément. Un avis Google prend 30 secondes et aide des dizaines d'automobilistes de la région à trouver un garage de confiance.</p>
         <div class="avis-values">
